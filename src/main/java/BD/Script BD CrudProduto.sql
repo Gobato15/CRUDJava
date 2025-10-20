@@ -1,0 +1,23 @@
+CREATE DATABASE Crudproduto;
+
+USE CrudProduto;
+
+CREATE TABLE tbl_produto(
+	id INT (11) NOT NULL,
+    descricao VARCHAR(70) NOT NULL,
+    valor DOUBLE NOT NULL,
+    quantidade INT(11) NOT NULL
+    ) ENGINE=Innodb DEFAULT CHARSET= UTF8;
+    
+ALTER TABLE tbl_produto
+	ADD PRIMARY KEY (id);
+    
+ALTER TABLE tbl_produto
+    MODIFY id INT NOT NULL AUTO_INCREMENT,
+    AUTO_INCREMENT=2;
+    
+    INSERT INTO tbl_produto(descricao, valor, quantidade)
+    VALUES('Arroz', 2.50, 4);
+    
+    
+    
