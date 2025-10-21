@@ -1,6 +1,7 @@
+BD\Conexao.class
 PreparedStatemed.class
 PreparedStatememt.class
 Janelas\CadastroProduto.class
-BD\Conexao.class
+Model\ProdutoTableModel.class
 Janelas\CadastroProduto$1.class
 Objetos\Produto.class
