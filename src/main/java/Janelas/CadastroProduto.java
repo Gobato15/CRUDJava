@@ -189,6 +189,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
         if (jTProdutos.getSelectedRow() != -1) {
             modelo.removeLinha(jTProdutos.getSelectedRow());
+        }
     }//GEN-LAST:event_jBExcluirActionPerformed
 
     private void jTProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTProdutosMouseClicked
@@ -198,8 +199,11 @@ public class CadastroProduto extends javax.swing.JFrame {
             jTQuantidade.setText(String.valueOf(p.getQuantidade()));
             jTValor.setText(String.valueOf(p.getValor()));
         }
+        
+        
     }//GEN-LAST:event_jTProdutosMouseClicked
 
+ 
     private void limpaCampos() {
         jTDescricao.setText("");
         jTQuantidade.setText("");
