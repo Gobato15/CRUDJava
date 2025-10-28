@@ -5,6 +5,7 @@
 package Janelas;
 
 import BD.Conexao;
+import DAO.ProdutoDAO;
 import Model.ProdutoTableModel;
 import Objetos.Produto;
 
@@ -181,10 +182,14 @@ public class CadastroProduto extends javax.swing.JFrame {
 
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
         Produto p = new Produto();
+        ProdutoDAO dao = new ProdutoDAO();
+        
         p.setDescricao(jTDescricao.getText());
         p.setQuantidade(Integer.parseInt(jTQuantidade.getText()));
         p.setValor(Double.valueOf(jTValor.getText().replace(",", ".")));
-        modelo.addLinha(p);
+        
+        dao.create(p);
+        modelo.recarregaTabela();
         limpaCampos();
     }//GEN-LAST:event_jBCadastrarActionPerformed
 

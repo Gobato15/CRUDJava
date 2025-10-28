@@ -77,4 +77,8 @@ public class ProdutoTableModel extends AbstractTableModel {
         lerDados();
         this.fireTableDataChanged();
     }
+
+    public void recarregaTabela() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
