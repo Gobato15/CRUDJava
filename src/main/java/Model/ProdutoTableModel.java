@@ -47,6 +47,22 @@ public class ProdutoTableModel extends AbstractTableModel {
         return null;
     }
 
+    @Override
+    public void setValueAt(Object valor, int linha, int coluna) {
+        switch (coluna) {
+            case 0:
+                dados.get(linha).setDescricao((String) valor);
+                break;
+            case 1:
+                dados.get(linha).setQuantidade(Integer.parseInt((String) valor));
+                break;
+            case 2:
+                dados.get(linha).setValor(Double.parseDouble((String) valor));
+                break;
+        }
+        this.fireTableRowsUpdated(linha, linha);
+    }
+
     public void addLinha(Produto p) {
         this.dados.add(p);
         this.fireTableDataChanged();
@@ -68,11 +84,11 @@ public class ProdutoTableModel extends AbstractTableModel {
             this.addLinha(p);
 
         }
-        
+
         this.fireTableDataChanged();
     }
-    
-    public void recarreTabela(){
+
+    public void recarreTabela() {
         this.dados.clear();
         lerDados();
         this.fireTableDataChanged();
@@ -81,4 +97,5 @@ public class ProdutoTableModel extends AbstractTableModel {
     public void recarregaTabela() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 }

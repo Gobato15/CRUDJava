@@ -48,7 +48,7 @@ public class ProdutoDAO {
         return produtos;
     }
     
-    public void create(Produto p){
+     public void create(Produto p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
@@ -63,6 +63,31 @@ public class ProdutoDAO {
             
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Falha ao cadastrar: " + e);
+        }finally {
+            Conexao.closeConnection(con, stmt);
+        }
+        
+    }
+   
+    
+     public void update(Produto p){
+        Connection con = Conexao.getConnection();
+        PreparedStatement stmt = null;
+  
+        
+        try {
+            stmt = con.prepareStatement("UPDATE tbl_produto SET descricao = ?, quantidade = ?, valor = ? WHERE id = ?");
+            stmt.setString(1, p.getDescricao());
+            stmt.setInt(2,p.getQuantidade());
+            stmt.setDouble(3,p.getValor());
+            stmt.setInt(4, p.getId());
+            
+            
+            stmt.execute();
+            JOptionPane.showMessageDialog(null,"Produro atualizado com sucesso!");
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Falha ao atualizar: " + e);
         }finally {
             Conexao.closeConnection(con, stmt);
         }
