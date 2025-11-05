@@ -29,7 +29,7 @@ public List<Usuario> read(){
         List<Usuario> usuarios = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM tbl_produto");
+            stmt = con.prepareStatement("SELECT * FROM tbl_usuarios");
             rs = stmt.executeQuery();
             
             while(rs.next()){
@@ -37,7 +37,8 @@ public List<Usuario> read(){
                 u.setId(rs.getInt("id"));
                 u.setNome(rs.getString("nome"));
                 u.setLogin(rs.getString("login"));
-                u.setSenha(rs.getString("tipo"));
+                u.setSenha(rs.getString("senha"));
+                u.setTipo(rs.getString("tipo"));
                 usuarios.add(u);
         }
         } catch (SQLException e) {
@@ -53,14 +54,14 @@ public List<Usuario> read(){
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("INSERT INTO tbl_produto(nome,login,senha,tipo) VALUES (?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO tbl_usuarios(nome,login,senha,tipo) VALUES (?,?,?,?)");
             stmt.setString(1, u.getNome());
             stmt.setString(2,u.getLogin());
-            stmt.setString(3,u.getSenha());
+            stmt.setString(3,u.getSenhaHash());
             stmt.setString(4,u.getTipo());
             
             stmt.execute();
-            JOptionPane.showMessageDialog(null,"Produro cadastrado com sucesso!");
+            JOptionPane.showMessageDialog(null,"Usuarios cadastrado com sucesso!");
             
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Falha ao cadastrar: " + e);
@@ -80,13 +81,13 @@ public List<Usuario> read(){
             stmt = con.prepareStatement("UPDATE tbl_usuarios SET nome = ?, login = ?, senha = ?, tipo =? WHERE id = ?");
             stmt.setString(1, u.getNome());
             stmt.setString(2,u.getLogin());
-            stmt.setString(3,u.getSenha());
+            stmt.setString(3,u.getSenhaHash());
             stmt.setString(4,u.getTipo());
             stmt.setInt(5,u.getId());
             
             
             stmt.execute();
-            JOptionPane.showMessageDialog(null,"Usuario atualizado com sucesso!");
+            JOptionPane.showMessageDialog(null,"Programa atualizado com sucesso!");
             
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Falha ao atualizar: " + e);
@@ -102,12 +103,12 @@ public List<Usuario> read(){
   
         
         try {
-            stmt = con.prepareStatement("DELETE FROM tbl_produto WHERE id = ?");
+            stmt = con.prepareStatement("DELETE FROM tbl_usuarios WHERE id = ?");
             stmt.setInt(1, p.getId());
             
             
             stmt.execute();
-            JOptionPane.showMessageDialog(null,"Produro removido com sucesso!");
+            JOptionPane.showMessageDialog(null,"Produto removido com sucesso!");
             
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Falha ao remover: " + e);
@@ -116,6 +117,33 @@ public List<Usuario> read(){
         }
         
     }
+     
+     public Usuario verificaUsuario (String login){
+         Connection con = Conexao.getConnection();
+         PreparedStatement stmt = null;
+         ResultSet rs = null;
+         Usuario u = new Usuario();
+         
+         try {
+            stmt = con.prepareStatement("SELECT * FROM tbl_usuarios where login = ?");
+            stmt.setString(1, login);
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                u.setId(rs.getInt("id"));
+                u.setNome(rs.getString("nome"));
+                u.setLogin(rs.getString("login"));
+                u.setSenha(rs.getString("senha"));
+                u.setTipo(rs.getString("tipo"));
+        }
+            return u;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Falha ao obter dados:" + e);
+        }finally{
+            Conexao.closeConnection(con, stmt, rs);
+        }
+         return null;
+     }
 
  
 }
