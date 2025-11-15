@@ -62,9 +62,9 @@
                                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTLogin" min="-2" pref="275" max="-2" attributes="0"/>
-                                  <Component id="jPSenha" alignment="0" min="-2" pref="275" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jTLogin" pref="275" max="32767" attributes="0"/>
+                                  <Component id="jPSenha" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -90,9 +90,9 @@
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jPSenha" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Component id="jBEntrar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="60" max="32767" attributes="0"/>
+              <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -119,8 +119,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTLogin">
     </Component>
-    <Component class="javax.swing.JTextField" name="jPSenha">
-    </Component>
     <Component class="javax.swing.JButton" name="jBEntrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="ENTRAR"/>
@@ -128,6 +126,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBEntrarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="jPSenha">
     </Component>
   </SubComponents>
 </Form>

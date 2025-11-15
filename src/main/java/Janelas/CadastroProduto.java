@@ -4,10 +4,10 @@
  */
 package Janelas;
 
-import BD.Conexao;
 import DAO.ProdutoDAO;
 import Model.ProdutoTableModel;
 import Objetos.Produto;
+import Objetos.Usuario;
 
 /**
  *
@@ -22,9 +22,20 @@ public class CadastroProduto extends javax.swing.JFrame {
      */
     public CadastroProduto() {
         initComponents();
+      
+    }
+    
+    public CadastroProduto(Usuario u) {
+        initComponents();
         this.setLocationRelativeTo(null);
         jTProdutos.setModel(modelo);
         modelo.recarreTabela();
+        
+        if ("Admin".equals(u.getTipo())){
+            jBUsuarios.setEnabled(true);
+        }else {
+            jBUsuarios.setEnabled(false);
+       }
     }
 
     /**
@@ -49,6 +60,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         jBExcluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTProdutos = new javax.swing.JTable();
+        jBUsuarios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -158,6 +170,8 @@ public class CadastroProduto extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTProdutos);
 
+        jBUsuarios.setText("Usuario");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,6 +183,10 @@ public class CadastroProduto extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBUsuarios)
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +197,9 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBUsuarios)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -278,6 +298,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JButton jBAlterar;
     private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBExcluir;
+    private javax.swing.JButton jBUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -36,8 +36,8 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTLogin = new javax.swing.JTextField();
-        jPSenha = new javax.swing.JTextField();
         jBEntrar = new javax.swing.JButton();
+        jPSenha = new javax.swing.JPasswordField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -87,9 +87,9 @@ public class Login extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                                    .addComponent(jPSenha))))
                         .addGap(0, 16, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -106,9 +106,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jPSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
+                .addGap(52, 52, 52)
                 .addComponent(jBEntrar)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
@@ -120,7 +120,7 @@ public class Login extends javax.swing.JFrame {
 
         user = dao.verificaUsuario(jTLogin.getText());
 
-        if (user.verificarSenha(String.valueOf(jPSenha.getText()))) {
+        if (user.verificarSenha( new String(jPSenha.getPassword()))) {
             CadastroProduto cp = new CadastroProduto();
             cp.setVisible(true);
             this.dispose();
@@ -169,7 +169,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jPSenha;
+    private javax.swing.JPasswordField jPSenha;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTLogin;
     private javax.swing.JTable jTable1;

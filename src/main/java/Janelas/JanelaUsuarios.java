@@ -75,7 +75,7 @@ public class JanelaUsuarios extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Geenciamento de Usuários");
+        jLabel1.setText("Gerenciamento de Usuários");
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
@@ -215,9 +215,10 @@ public class JanelaUsuarios extends javax.swing.JFrame {
         UsuarioDAO dao = new UsuarioDAO();
 
         try {
+            String senhaDigitada = new String(jPSenha.getPassword());
+            u.setSenhaHash(senhaDigitada);
             u.setNome(jTNome.getText());
             u.setLogin(jTLogin.getText());
-            u.setSenhaHash(jPSenha.getPassword().toString());
             u.setTipo(jCTipo.getSelectedItem().toString());
             dao.create(u);
             modelo.recarregaTabela();
